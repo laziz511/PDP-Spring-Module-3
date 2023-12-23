@@ -3,15 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <title>Edit Book</title>
+  <!-- Add Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-<form method="post" th:action="@{'/book/update/' + ${book.id}}">
-  <input type="text" name="title" th:value="${book.title}" placeholder="Book title">
-  <input type="text" name="description" th:value="${book.description}" placeholder="Book description">
-  <input type="text" name="price" th:value="${book.price}" placeholder="Book price">
-  <input type="text" name="author" th:value="${book.author}" placeholder="Book author">
+<div class="container mt-5">
+  <form method="post" th:action="@{'/book/update/' + ${book.id}}">
+    <div class="form-group">
+      <label for="title">Book Title:</label>
+      <input type="text" class="form-control" id="title" name="title" th:value="${book.title}" placeholder="Book title">
+    </div>
 
-  <input type="submit" value="Update">
-</form>
+    <div class="form-group">
+      <label for="description">Book Description:</label>
+      <input type="text" class="form-control" id="description" name="description" th:value="${book.description}" placeholder="Book description">
+    </div>
+
+    <div class="form-group">
+      <label for="price">Book Price:</label>
+      <input type="text" class="form-control" id="price" name="price" th:value="${book.price}" placeholder="Book price">
+    </div>
+
+    <div class="form-group">
+      <label for="author">Book Author:</label>
+      <input type="text" class="form-control" id="author" name="author" th:value="${book.author}" placeholder="Book author">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
+
+<!-- Add Bootstrap JS and Popper.js (if needed) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

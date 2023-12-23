@@ -3,33 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-<h1>Home Page</h1>
+<div class="container mt-5">
+    <h1>Home Page</h1>
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Author</th>
-        <th>Action</th>
-    </tr>
-    <tr th:each="book : ${books}">
-        <td th:text="${book.id}"></td>
-        <td th:text="${book.title}"></td>
-        <td th:text="${book.description}"></td>
-        <td th:text="${book.price}"></td>
-        <td th:text="${book.author}"></td>
-        <td>
-            <a th:href="@{'/book/edit/' + ${book.id}}">Edit</a>
-            |
-            <a th:href="@{'/book/delete/' + ${book.id}}">Delete</a>
-        </td>
-    </tr>
-</table>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Author</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.id}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.description}"></td>
+            <td th:text="${book.price}"></td>
+            <td th:text="${book.author}"></td>
+            <td>
+                <a href="#" class="btn btn-primary" th:href="@{'/book/edit/' + ${book.id}}">Edit</a>
+                <a href="#" class="btn btn-danger" th:href="@{'/book/delete/' + ${book.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
-<a href="/book/create">Create New Book</a>
+    <a href="/book/create" class="btn btn-success">Create New Book</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
