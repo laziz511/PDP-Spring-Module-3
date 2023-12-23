@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head('Home Page')"></head>
+
+<body class="container mt-5">
+
 <div class="container mt-5">
-    <h1>Home Page</h1>
+    <h1>Books</h1>
 
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
@@ -37,9 +36,7 @@
 
     <a href="/book/create" class="btn btn-success">Create New Book</a>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<section th:replace="fragments :: js_links"></section>
 </body>
+
 </html>
