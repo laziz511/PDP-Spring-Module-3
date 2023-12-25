@@ -1,19 +1,18 @@
-package jsongenerator;
+package uz.pdp.online.springbootapplication.jsongenerator;
 
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
-import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-class JsonGeneratorTest {
+public class JsonGeneratorImpl {
 
-    @Test
-    void jsonManualGenerateTest() throws IOException {
+
+    public static void jsonManualGenerateTest() throws IOException {
 
         JsonFactory jsonFactory = new JsonFactory();
         try (JsonGenerator generator = jsonFactory.createGenerator(new File("data/transaction.json"), JsonEncoding.UTF8)) {

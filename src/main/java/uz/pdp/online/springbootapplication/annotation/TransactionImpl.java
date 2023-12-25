@@ -1,19 +1,17 @@
-package annotation;
+package uz.pdp.online.springbootapplication.annotation;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
-import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-class TransactionTest {
+public class TransactionImpl {
 
-    @Test
-    void transactionToJsonFile() throws IOException {
+    public static void transactionToJsonFile() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
         File file = new File("data/transaction_reversed.json");
@@ -22,13 +20,11 @@ class TransactionTest {
         mapper.writeValue(file, transaction);
     }
 
-    @Test
-    void jsonToTransactionObject() throws IOException {
+    public static void jsonToTransactionObject() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
         File file = new File("data/transaction_reversed.json");
 
-        // Specify the type reference explicitly
         TypeReference<Transaction> typeReference = new TypeReference<Transaction>() {};
         Transaction transaction = mapper.readValue(file, TypeFactory.defaultInstance().constructType(typeReference));
 

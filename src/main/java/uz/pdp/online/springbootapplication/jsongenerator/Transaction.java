@@ -1,7 +1,5 @@
-package annotation;
+package uz.pdp.online.springbootapplication.jsongenerator;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -15,26 +13,18 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@JsonPropertyOrder(value = {"updatedAt", "createdAt", "status", "amount", "id"})
 public class Transaction {
 
-    @JsonProperty("id")
     private Long id;
-
-    @JsonProperty("amount")
     private BigDecimal amount;
-
-    @JsonProperty("status")
     private Status status;
 
-    @JsonProperty("createdAt")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime createdAt;
 
-    @JsonProperty("updatedAt")
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = uz.pdp.online.springbootapplication.annotation.Transaction.LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = uz.pdp.online.springbootapplication.annotation.Transaction.LocalDateTimeDeserializer.class)
     private LocalDateTime updatedAt;
 
     public Transaction(Long id, BigDecimal amount, Status status, LocalDateTime createdAt, LocalDateTime updatedAt) {
@@ -88,6 +78,18 @@ public class Transaction {
         this.updatedAt = updatedAt;
     }
 
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "id=" + id +
+                ", amount=" + amount +
+                ", status=" + status +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
+    }
+
     public static class LocalDateTimeSerializer extends JsonSerializer<LocalDateTime> {
         @Override
         public void serialize(LocalDateTime value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
@@ -101,4 +103,5 @@ public class Transaction {
             return LocalDateTime.parse(p.getValueAsString());
         }
     }
+
 }

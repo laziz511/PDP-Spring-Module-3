@@ -1,22 +1,18 @@
-package immutable;
-
-import org.junit.jupiter.api.Test;
+package uz.pdp.online.springbootapplication.immutable;
 
 import java.io.File;
 import java.io.IOException;
 
-class PersonInJsonFormatTest {
+public class PersonInJsonFormatImpl {
 
-    @Test
-    void personToJson() throws IOException {
+    public static void personToJson() throws IOException {
         File file = new File("data/person.json");
         Person person = new Person("Laziz", "Djuraev", 20);
 
         person.writeToJSONFile(file.getPath());
     }
 
-    @Test
-    void jsonToPerson() throws IOException {
+    public static void jsonToPerson() throws IOException {
         File file = new File("data/person.json");
         Person person = Person.readFromJSONFile(file.getPath());
 

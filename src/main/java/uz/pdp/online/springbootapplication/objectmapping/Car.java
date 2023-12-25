@@ -1,4 +1,4 @@
-package objectmapping;
+package uz.pdp.online.springbootapplication.objectmapping;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

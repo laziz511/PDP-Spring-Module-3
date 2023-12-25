@@ -1,4 +1,4 @@
-package immutable;
+package uz.pdp.online.springbootapplication.immutable;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -35,7 +35,6 @@ public record Person(String firstName, String lastName, int age) {
     public void writeToXMLFile(String filePath) throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
         xmlMapper.writeValue(new File(filePath), this);
-        System.out.println("Person saved to XML file: " + filePath);
     }
 
     // Method to read Person from XML file

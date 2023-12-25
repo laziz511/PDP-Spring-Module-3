@@ -1,19 +1,16 @@
-package objectmapping;
+package uz.pdp.online.springbootapplication.objectmapping;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 
-class CarMapperTest {
+public class CarMapperImpl {
 
-
-    @Test
-    void carToJson() throws IOException {
+    public static void carToJson() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
         File file = new File("data/car.json");
@@ -22,8 +19,8 @@ class CarMapperTest {
         mapper.writeValue(file, car);
     }
 
-    @Test
-    void jsonToCar() throws IOException {
+
+    public static void jsonToCar() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
         File file = new File("data/car.json");
@@ -32,8 +29,7 @@ class CarMapperTest {
         System.out.println(car);
     }
 
-    @Test
-    void carArrayToJson() throws IOException {
+    public static void carArrayToJson() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
         File file = new File("data/cars.json");
@@ -45,8 +41,7 @@ class CarMapperTest {
         mapper.writeValue(file, cars);
     }
 
-    @Test
-    void JsonToCarList() throws IOException {
+    public static void JsonToCarList() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
         File file = new File("data/cars.json");

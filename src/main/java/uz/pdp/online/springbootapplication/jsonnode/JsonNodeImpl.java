@@ -1,13 +1,12 @@
-package jsonnode;
+package uz.pdp.online.springbootapplication.jsonnode;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.Test;
 
-class JsonNodeTest {
 
-    @Test
-    void stringToJsonNode() throws Exception {
+public class JsonNodeImpl {
+
+    public static void stringToJsonNode() throws Exception {
         String jsonSTRING = """
                 {
                 "id" : 1,

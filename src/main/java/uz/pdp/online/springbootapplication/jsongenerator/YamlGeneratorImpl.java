@@ -1,17 +1,15 @@
-package jsongenerator;
+package uz.pdp.online.springbootapplication.jsongenerator;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-class YamlGeneratorTest {
+public class YamlGeneratorImpl {
 
-    @Test
-    void transactionObjectToYamlFile() throws Exception {
+    public static void transactionObjectToYamlFile() throws Exception {
 
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         mapper.findAndRegisterModules();
@@ -22,14 +20,11 @@ class YamlGeneratorTest {
 
     }
 
-    @Test
-    void yamlToTransactionObject() throws Exception {
+    public static void yamlToTransactionObject() throws Exception {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
 
         Transaction transaction = mapper.readValue(new File("data/output.yaml"), Transaction.class);
 
         System.out.println(transaction);
     }
-
-
 }
