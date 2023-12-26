@@ -1,6 +1,7 @@
 package uz.pdp.online.springbootapplication.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,25 +19,10 @@ public class StudentController {
     private final StudentService studentService;
 
     @GetMapping
-    public List<Student> getAllStudents() {
-        return studentService.getAllStudents();
+    public ResponseEntity<List<Student>> getAllStudents() {
+        List<Student> students = studentService.getAllStudents();
+        return ResponseEntity.ok(students);
     }
-
-    @GetMapping("/{from}/{to}")
-    public List<Student> getAllStudentsByBirthDaysBetween(@PathVariable Integer from, @PathVariable Integer to) {
-        return studentService.findByBirthDateBetween(from, to);
-    }
-
-    @GetMapping("/gender/{gender}")
-    public List<Student> getAllStudentByGender(@PathVariable Gender gender) {
-        return studentService.findByGender(gender);
-    }
-
-    @GetMapping("/gender/native/{gender}")
-    public List<Student> getAllStudentByGenderNative(@PathVariable Gender gender) {
-        return studentService.findByGenderNative(gender);
-    }
-
 
     @GetMapping("/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
@@ -59,6 +45,40 @@ public class StudentController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/birthDate")
+    public ResponseEntity<List<Student>> getStudentsByBirthDateRange(
+            @RequestParam Integer from,
+            @RequestParam Integer to) {
+        List<Student> students = studentService.findByBirthDateBetween(from, to);
+        return ResponseEntity.ok(students);
+    }
+
+    @GetMapping("/gender/{gender}")
+    public ResponseEntity<List<Student>> getStudentsByGender(@PathVariable Gender gender) {
+        List<Student> students = studentService.findByGender(gender);
+        return ResponseEntity.ok(students);
+    }
+
+    @GetMapping("/gender/native/{gender}")
+    public ResponseEntity<List<Student>> getStudentsByGenderNative(@PathVariable Gender gender) {
+        List<Student> students = studentService.findByGenderNative(gender);
+        return ResponseEntity.ok(students);
+    }
+
+    @GetMapping("/paged")
+    public ResponseEntity<Page<Student>> getAllStudentsPaged(
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size) {
+        Page<Student> students = studentService.getAllStudentsPaged(page, size);
+        return ResponseEntity.ok(students);
+    }
+
+    @GetMapping("/byGroup/{groupId}")
+    public ResponseEntity<List<Student>> getStudentsByGroupId(@PathVariable Long groupId) {
+        List<Student> students = studentService.getStudentsByGroupId(groupId);
+        return ResponseEntity.ok(students);
     }
 }

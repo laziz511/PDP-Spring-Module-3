@@ -12,17 +12,17 @@ import java.util.List;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
-    @Query(value = "select s from Student s where s.birthDate >= ?1 AND s.birthDate <= ?2")
+    @Query("SELECT s FROM Student s WHERE s.birthDate BETWEEN :from AND :to")
     List<Student> findByBirthDateBetweenCustom(Date from, Date to);
 
     @Query(name = "Student.findByGender")
     List<Student> findByGenderNamedQuery(Gender gender);
 
-    @Query(name = "Student.findByGenderNative")
+    @Query(nativeQuery = true, name = "Student.findByGenderNative")
     List<Student> findByGenderNamedNativeQuery(Gender gender);
 
-    @Query(value = "select s from Student s")
-    Page<Student> getAllPostsPaged(Pageable pageable);
+    @Query("SELECT s FROM Student s")
+    Page<Student> getAllStudentPaged(Pageable pageable);
 
     @Query("SELECT s FROM Student s WHERE s.group.id = :groupId")
     List<Student> findByGroupId(Long groupId);

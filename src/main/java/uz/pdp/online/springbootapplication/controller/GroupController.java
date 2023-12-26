@@ -1,7 +1,6 @@
 package uz.pdp.online.springbootapplication.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,5 +43,11 @@ public class GroupController {
     public ResponseEntity<Void> deleteGroup(@PathVariable Long id) {
         groupService.deleteGroup(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Group>> searchGroupsByName(@RequestParam String name) {
+        List<Group> groups = groupService.getAllGroupsByName(name);
+        return ResponseEntity.ok(groups);
     }
 }

@@ -1,6 +1,9 @@
 package uz.pdp.online.springbootapplication.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import uz.pdp.online.springbootapplication.entity.Gender;
 import uz.pdp.online.springbootapplication.entity.Student;
@@ -22,7 +25,8 @@ public class StudentService {
     }
 
     public Student getStudentById(Long id) {
-        return studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException("Student not found with the id: " + id));
+        return studentRepository.findById(id)
+                .orElseThrow(() -> new StudentNotFoundException("Student not found with the id: " + id));
     }
 
     public Student createStudent(Student student) {
@@ -57,4 +61,14 @@ public class StudentService {
     public List<Student> findByGenderNative(Gender gender) {
         return studentRepository.findByGenderNamedNativeQuery(gender);
     }
+
+    public Page<Student> getAllStudentsPaged(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return studentRepository.getAllStudentPaged(pageable);
+    }
+
+    public List<Student> getStudentsByGroupId(Long groupId) {
+        return studentRepository.findByGroupId(groupId);
+    }
+
 }

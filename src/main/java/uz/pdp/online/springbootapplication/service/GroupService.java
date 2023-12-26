@@ -1,7 +1,6 @@
 package uz.pdp.online.springbootapplication.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uz.pdp.online.springbootapplication.entity.Group;
 import uz.pdp.online.springbootapplication.exception.GroupNotFoundException;
@@ -43,5 +42,9 @@ public class GroupService {
 
     public void deleteGroup(Long id) {
         groupRepository.deleteById(id);
+    }
+
+    public List<Group> getAllGroupsByName(String name) {
+        return groupRepository.findAllByName(name);
     }
 }

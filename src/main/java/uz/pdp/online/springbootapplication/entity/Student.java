@@ -1,8 +1,8 @@
 package uz.pdp.online.springbootapplication.entity;
 
-import lombok.*;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.*;
 import uz.pdp.online.springbootapplication.listener.EntityModificationListener;
 
 import java.util.Date;
@@ -14,7 +14,7 @@ import java.util.Date;
         name = "Student.findByGender",
         query = "SELECT s FROM Student s WHERE s.gender = :gender")
 @NamedNativeQuery(
-        name = "Student.findByGenderNative" ,
+        name = "Student.findByGenderNative",
         query = "SELECT * FROM students WHERE gender = CAST(:gender AS VARCHAR)",
         resultClass = Student.class
 )
@@ -33,6 +33,7 @@ public class Student {
     private String name;
 
     @Transient
+    @JsonIgnore
     private Integer age;
 
     @Temporal(TemporalType.DATE)
@@ -41,7 +42,7 @@ public class Student {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "group_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "GROUP_ID", nullable = false)
     private Group group;
 }
