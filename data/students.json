@@ -1,1 +1,86 @@
-[{"id":1,"name":"Laziz","age":20,"birthDate":1065812400000,"gender":"MEN","group":{"id":1,"name":"Group 1","students":null}},{"id":2,"name":"Fariza","age":16,"birthDate":1020279600000,"gender":"WOMEN","group":{"id":2,"name":"Group 2","students":null}},{"id":3,"name":"Sa'dulla","age":33,"birthDate":1009566000000,"gender":"MEN","group":{"id":3,"name":"Group 3","students":null}},{"id":4,"name":"Surayyo","age":25,"birthDate":1058986800000,"gender":"WOMEN","group":{"id":1,"name":"Group 1","students":null}},{"id":5,"name":"Sohib","age":13,"birthDate":1165172400000,"gender":"MEN","group":{"id":1,"name":"Group 1","students":null}},{"id":6,"name":"Bahora","age":46,"birthDate":1117306800000,"gender":"WOMEN","group":{"id":2,"name":"Group 2","students":null}},{"id":7,"name":"Valijon","age":24,"birthDate":1216062000000,"gender":"MEN","group":{"id":3,"name":"Group 3","students":null}}]
+[
+  {
+    "id": 1,
+    "name": "Laziz",
+    "age": 20,
+    "birthDate": 1065812400000,
+    "gender": "MEN",
+    "group": {
+      "id": 1,
+      "name": "Group 1",
+      "students": []
+    }
+  },
+  {
+    "id": 2,
+    "name": "Fariza",
+    "age": 16,
+    "birthDate": 1020279600000,
+    "gender": "WOMEN",
+    "group": {
+      "id": 2,
+      "name": "Group 2",
+      "students": []
+    }
+  },
+  {
+    "id": 3,
+    "name": "Sa'dulla",
+    "age": 33,
+    "birthDate": 1009566000000,
+    "gender": "MEN",
+    "group": {
+      "id": 3,
+      "name": "Group 3",
+      "students": []
+    }
+  },
+  {
+    "id": 4,
+    "name": "Surayyo",
+    "age": 25,
+    "birthDate": 1058986800000,
+    "gender": "WOMEN",
+    "group": {
+      "id": 1,
+      "name": "Group 1",
+      "students": []
+    }
+  },
+  {
+    "id": 5,
+    "name": "Sohib",
+    "age": 13,
+    "birthDate": 1165172400000,
+    "gender": "MEN",
+    "group": {
+      "id": 1,
+      "name": "Group 1",
+      "students": []
+    }
+  },
+  {
+    "id": 6,
+    "name": "Bahora",
+    "age": 46,
+    "birthDate": 1117306800000,
+    "gender": "WOMEN",
+    "group": {
+      "id": 2,
+      "name": "Group 2",
+      "students": []
+    }
+  },
+  {
+    "id": 7,
+    "name": "Valijon",
+    "age": 24,
+    "birthDate": 1216062000000,
+    "gender": "MEN",
+    "group": {
+      "id": 3,
+      "name": "Group 3",
+      "students": []
+    }
+  }
+]

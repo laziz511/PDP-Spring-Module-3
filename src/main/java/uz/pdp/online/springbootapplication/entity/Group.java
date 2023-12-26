@@ -15,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Builder
 public class Group {
 
     @Id
@@ -28,8 +27,4 @@ public class Group {
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     private List<Student> students;
 
-    public Group(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 }

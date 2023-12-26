@@ -8,6 +8,7 @@ import uz.pdp.online.springbootapplication.entity.Student;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 
 public class DataJsonWriter {
@@ -20,9 +21,9 @@ public class DataJsonWriter {
 
         File groupsFile = new File(GROUPS_JSON_FILE_PATH);
         Group[] groups = {
-                new Group(1L, "Group 1"),
-                new Group(2L, "Group 2"),
-                new Group(3L, "Group 3")};
+                new Group(1L, "Group 1", Collections.emptyList()),
+                new Group(2L, "Group 2", Collections.emptyList()),
+                new Group(3L, "Group 3", Collections.emptyList())};
 
         mapper.writeValue(groupsFile, groups);
 
