@@ -3,10 +3,13 @@ package uz.pdp.online.springbootapplication.entity;
 import lombok.*;
 
 import jakarta.persistence.*;
+import uz.pdp.online.springbootapplication.listener.EntityModificationListener;
+
 import java.util.Date;
 
 @Entity
 @Table(name = "STUDENTS")
+@EntityListeners(EntityModificationListener.class)
 @NamedQuery(
         name = "Student.findByGender",
         query = "SELECT s FROM Student s WHERE s.gender = :gender")
