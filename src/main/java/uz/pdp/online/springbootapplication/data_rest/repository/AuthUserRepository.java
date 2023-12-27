@@ -5,7 +5,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import uz.pdp.online.springbootapplication.data_rest.entity.AuthUser;
 
 
-@RepositoryRestResource
+@RepositoryRestResource(path = "auth-user", collectionResourceRel = "auth-user")
 public interface AuthUserRepository extends JpaRepository<AuthUser, Long> {
 
 }
