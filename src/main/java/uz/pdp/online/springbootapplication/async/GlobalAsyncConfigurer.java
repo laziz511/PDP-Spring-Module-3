@@ -25,9 +25,7 @@ public class GlobalAsyncConfigurer implements AsyncConfigurer {
 
     @Override
     public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
-        return (e, method, params) -> {
-            log.error("Error : On Method : {}, Input Parameters : {}", method.getName(), params);
-            e.printStackTrace();
-        };
+        return (e, method, params) ->
+                log.error("Error : On Method : {}, Input Parameters : {}", method.getName(), params);
     }
 }
