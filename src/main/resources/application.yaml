@@ -20,6 +20,10 @@ spring:
           enable: true
   freemarker:
     template-loader-path: 'classpath:/templates'
+
+logging:
+  level:
+    org.zalando.logbook: trace
 ---
 
 spring:
