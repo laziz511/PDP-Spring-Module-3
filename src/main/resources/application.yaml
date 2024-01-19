@@ -1,61 +1,42 @@
 spring:
   profiles:
     active: dev
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:h2:mem:airline_reservation_system
+    driver-class-name: 'org.h2.Driver'
+    username: sa
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
         format_sql: true
-  mail:
-    host: 'sandbox.smtp.mailtrap.io'
-    port: 587
-    username: 6a8ce87d149569
-    password: 7d91cc06d7b24a
-    properties:
-      smtp:
-        auth: true
-        starttls:
-          enable: true
-  freemarker:
-    template-loader-path: 'classpath:/templates'
 
-logging:
-  level:
-    org.zalando.logbook: trace
 ---
 
 spring:
   config:
     activate:
       on-profile: prod
-      name: prod-YAML
-      environment: production
-      enabled: true
-      servers:
-        - www.abc.com
-        - www.xyz.com
   datasource:
-    url: 'jdbc:postgresql://localhost:5432/spring'
+    url: jdbc:postgresql://localhost:5432/airline_reservation_system
+    driver-class-name: org.postgresql.Driver
     username: postgres
-    password: postgres
-    driver-class-name: 'org.postgresql.Driver'
-
----
-
-spring:
-  config:
-    activate:
-      on-profile: test
-      name: test-YAML
-      environment: testing
-      enabled: false
-      servers:
-        - www.abc.test.com
-        - www.xyz.test.com
-  datasource:
-    url: 'jdbc:h2:mem:~'
-    username: user
-    password: 123
-    driver-class-name: 'org.h2.Driver'
+    password: dev3469
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
